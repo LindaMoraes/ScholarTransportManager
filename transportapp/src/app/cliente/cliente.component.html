@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<p></p> 
+<div class="container" id='main-container'>
+    
+    <h3 class="table table-hover"> Passageiros - Alunos</h3>
+    <form class="form-inline my-2 my-lg-0">
+      <input type="search" (ngModelChange)="searchClientes(key.value)" #key="ngModel" ngModel
+       name="key" id="searchName" class="form-control mr-sm-2" placeholder="Procurar em Clientes..." required>
+   </form>
+<p></p> 
+    
+    <div class="infinite-scroll row">
+        <div *ngFor="let cliente of clientes" class="col-md-6 col-xl-3">
+            <div class="card m-b-30">
+                <div class="card-body row">
+                    <div class="col-6"  >
+                      <div *ngFor="let img of imagens" >
+                        <div *ngIf="img.cliente.id == cliente.id">
+                          <a href=""><img src="{{img.url}}" alt="" class="img-fluid rounded-circle w-photo"></a>
+                         </div>
+                      </div>
+                    </div>
+                    <div class="col-6 card-title align-self-center mb-0">
+                        <h5>{{cliente?.name}}</h5>
+                        <p class="m-0">{{cliente?.phone}}</p>
+                        <p class="m-0">Cod.: {{cliente?.id}}</p>
+                    </div>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><i class="fa fa-envelope float-right"></i><a href="#"> {{cliente?.email}}</a></li>
+                    <li class="list-group-item"><i class="fa fa-phone float-right"></i> {{cliente?.phone}}</li>
+                    <li class="list-group-item">
+                      Endereço Residencial: {{cliente?.endereco?.cidade}},
+                      <p class="m-0">{{cliente?.endereco?.bairro}}, {{cliente?.endereco?.rua}}, {{cliente?.endereco?.numero}}</p></li>
+                      <li class="list-group-item">{{cliente?.escola?.name}} </li>
+                </ul>
+                <div class="card-body">
+                    <div class="float-right btn-group btn-group-sm">
+                        <a (click)="onEditCliente(cliente)" class="btn btn-info tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil"></i> </a>
+                        <a (click)="onDeleteCliente(cliente?.id)" class="btn btn-secondary tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Delete"><i class="fa fa-times"></i></a>
+                                           
+                      </div> 
+                     
+                      <label  class="btn btn-primary" for="arquivo">Carregar foto</label>
+                        <input type="file" class="arquivo" id="arquivo" (change)="onChange($event)" multiple>
+                        <div>
+                        <button class="btn btn-primary"  type="button" (click)="onUpload(cliente.id)">Salvar</button>
+                        <p> 1° Carregar -> 2° Salvar</p>
+                      </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- Add Employee Modal -->
+<div class="modal fade" id="addClienteModal" tabindex="-1" role="dialog" aria-labelledby="addClienteModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+       <div class="modal-header">
+          <h5 class="modal-title" id="addClienteModalLabel">Add Employee</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+          </button>
+       </div>
+        <div class="modal-body">
+          <form #addForm="ngForm" (ngSubmit)="onAddCliente(addForm)">
+          <div class="form-group">
+             <label for="name">Name</label>
+             <input type="text" ngModel name="name" class="form-control" id="name" placeholder="Name" required>
+          </div>
+          <div class="modal-footer">
+             <button type="button" id="add-cliente-form" class="btn btn-secondary" data-dismiss="modal">Close</button>
+             <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary" >Save changes</button>
+          </div> 
+          </form>
+       </div>
+    </div>
+  </div>
+  </div>
+  
+  <p></p>
+  <p></p>
+  
+<!-- Notification for no employees -->
+<div class="col-lg-12 col-md-12 col-xl-12">
+  <div  *ngIf="clientes?.length == 0" class="alert alert-info" role="alert">
+    <h4 class="alert-heading">NENHUM PASSAGEIRO CADASTRADO!</h4>
+    <p>Nenhum passageiro foi encontrado.</p>
+  </div>
+  </div>
+
+  <p></p> 
+<p>-</p>
+<p></p>

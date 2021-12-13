@@ -1,0 +1,32 @@
+<p></p> 
+<p></p> 
+<div class="container">
+  <h3>Escolas</h3>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nome</th>
+        <th scope="col">Endereço</th>
+        <th scope="col">Cidade</th>
+        <th scope="col">Contato</th>
+        <th style="text-align: right;" scope="col">Edições</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor ="let escola of escolas" >
+        <td>{{escola.id}}</td>
+        <td>{{escola.name}}</td>
+        <td>{{escola?.endereco?.bairro}}, {{escola?.endereco?.rua}}, {{escola?.endereco?.numero}}</td>
+        <td>{{escola?.endereco?.cidade}}</td>
+        <td>{{escola.contato}}</td>
+        <td>
+          <div class="float-right btn-group btn-group-sm">
+            <a (click)="onEditEscola(escola)" class="btn btn-primary tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil"></i> </a>
+            <a (click)="onDeleteEscola(escola?.id)" class="btn btn-secondary tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-times"></i></a>
+          </div>
+        </td>
+        </tr>
+    </tbody>
+  </table>
+  </div>

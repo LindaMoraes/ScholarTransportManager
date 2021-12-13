@@ -1,0 +1,28 @@
+<p></p>
+<form [formGroup]="formEscola">
+    <div class="container form-group">
+        <h4>Cadastro de Escolas</h4>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="inputName">Nome</label>
+            <input type="text" class="form-control" id="inputName"  formControlName="name" placeholder="Nome">
+          </div>
+        
+        <div class="form-group col-md-6">
+          <label for="inputPhone">Telefone para contato</label>
+          <input type="text" class="form-control" id="inputPhone" formControlName="contato" placeholder="55 3226-9999">
+        </div>
+        <div class="form-group col-md-4">
+            <label for="inputState">Endereço</label>
+            <select id="inputState" class="form-control" formControlName="endereco">
+              <option selected>Choose...</option>
+              <option *ngFor ="let endereco of enderecos" [ngValue]="endereco">
+                {{ endereco.rua }},{{ endereco.numero }}
+              </option>
+            </select>
+          </div>
+    </div>
+
+        <button type="submit" class="btn btn-primary"  (click)="cadastraEscola()">Enviar</button>
+    </div>
+      </form>

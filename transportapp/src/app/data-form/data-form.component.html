@@ -1,0 +1,45 @@
+<p></p>
+
+<form [formGroup]="formCliente">   
+    <div class="container form-group">
+    <h4>Cadastro de Alunos Passageiros</h4>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputName">Nome</label>
+        <input type="text" class="form-control" id="inputName"  formControlName="name" placeholder="Nome">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputEmail">E-mail</label>
+        <input type="email" class="form-control" id="inputEmail" formControlName="email" placeholder="Email">
+      </div>
+    
+    <div class="form-group col-md-3">
+      <label for="inputPhone">Telefone</label>
+      <input type="text" class="form-control" id="inputPhone" formControlName="phone" placeholder="55 99999-9999">
+    </div>
+    <div class="form-group col-md-4">
+        <label for="inputState">Escola</label>
+        <select id="inputState" class="form-control" formControlName="escola">
+          <option selected>Choose...</option>
+          <option *ngFor ="let escola of escolas" [ngValue]="escola">
+            {{ escola.name }}
+          </option>
+        </select>
+      </div>
+      <div class="form-group col-md-4">
+        <label for="inputState">Endereço</label>
+        <select id="inputState" class="form-control" formControlName="endereco">
+          <option selected>Choose...</option>
+          <option *ngFor ="let endereco of enderecos" [ngValue]="endereco">
+            {{ endereco.rua }}, {{endereco.numero}}
+          </option>
+        </select>
+      </div>
+    </div>
+    <!--    <div class="form-group">
+            <label for="exampleFormControlFile1">Example file input</label>
+            <input type="file" class="form-control-file" id="exampleFormControlFile1">
+          </div> -->
+    <button type="submit" class="btn btn-primary"  (click)="cadastraCliente()">Enviar</button>
+</div>  
+</form>

@@ -1,0 +1,29 @@
+<p></p> <p></p> 
+<div class="container">
+<h3>Endereços</h3>
+
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Cidade</th>
+        <th scope="col">Bairro</th>
+        <th scope="col">Rua</th>
+        <th style="text-align:right;" scope="col"> Edições</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor ="let endereco of enderecos" >
+        <td>{{endereco.id}}</td>
+        <td>{{endereco.cidade}}</td>
+        <td>{{endereco?.bairro}}</td>
+        <td>{{endereco.rua}}, {{endereco.numero}}</td>
+        <td>
+          <div class="float-right btn-group btn-group-sm">
+            <a (click)="onEditEndereco(endereco)" class="btn btn-primary tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil"></i> </a>
+            <a (click)="onDeleteEndereco(endereco?.id)" class="btn btn-secondary tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Delete"><i class="fa fa-times"></i></a>
+          </div>
+        </tr>
+    </tbody>
+  </table>
+</div>

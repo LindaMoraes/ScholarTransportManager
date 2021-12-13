@@ -1,0 +1,33 @@
+<p></p>
+
+<form [formGroup]="formEndereco">
+    <div class="container form-group">
+    <h4>Cadastro de Endereço</h4>
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label for="inputCidade">Cidade</label>
+        <input type="text" class="form-control" id="inputCidade"  formControlName="cidade" placeholder="Cidade">
+      </div>
+      <div class="form-group col-md-3">
+        <label for="inputBairro">Bairro</label>
+        <input type="text" class="form-control" id="inputBairro" formControlName="bairro" placeholder="Bairro">
+      </div>
+    <div class="form-group col-md-3">
+      <label for="inputRua">Rua</label>
+      <input type="text" class="form-control" id="inputRua" formControlName="rua" placeholder="Avenida, rua...">
+    </div>
+    <div class="form-group ">
+      <label for="inputNumero">Número</label>
+      <input type="text" class="form-control" formControlName="numero" id="inputNumero">
+    </div>
+</div> 
+
+<button type="submit" class="btn btn-primary"  (click)="cadastraEndereco()">Enviar</button>
+<p></p> 
+
+<div>
+<button type="button" [routerLink]="['/formulario']" class="btn btn-primary" >Cadastrar Aluno/Passageiro</button> <a>  ou  </a>
+<button type="button" [routerLink]="['/form-escola']" class="btn btn-primary" >Cadastrar Escola </button>
+</div>
+</div>
+</form>
