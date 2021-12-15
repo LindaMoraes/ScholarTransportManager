@@ -4,9 +4,17 @@ input[type = "file"] {
 
 
 .w-photo {
-    width: 100px;
+    width: 110px;
 }
 
 .btn-salvar {
     display: none;
+}
+
+ul {
+    display:inline-flex;
+}
+
+.ali {
+    align-content: space-between;
 }

@@ -1,14 +1,27 @@
+<app-navbar></app-navbar>
 <!DOCTYPE html>
 
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
+
 <p></p> 
 <div class="container" id='main-container'>
+  
+  <h3 class="table table-hover"> Passageiros - Alunos</h3>   
     
-    <h3 class="table table-hover"> Passageiros - Alunos</h3>
-    <form class="form-inline my-2 my-lg-0">
+    
+  <ul>
+    <form class="form-inline my-2 my-lg-0 ali">
       <input type="search" (ngModelChange)="searchClientes(key.value)" #key="ngModel" ngModel
-       name="key" id="searchName" class="form-control mr-sm-2" placeholder="Procurar em Clientes..." required>
-   </form>
+       name="key" id="searchName" class="form-control mr-sm-2"  placeholder="Procurar em Clientes..." required>
+    </form>
+
+     <a class="ali"><button type="button" class="btn btn-primary" [routerLink]="['/formulario']"> Cadastrar novo passageiro</button></a>
+
+  </ul>
+
+
+
+
 <p></p> 
     
     <div class="infinite-scroll row">
